@@ -13,5 +13,5 @@ const SHEETS_CONFIG = {
     apiKey: 'AIzaSyBmluqDw7uRYZfTqE0DfnO1pTzEWKBl9uQ',
     
     // WhatsApp booking link
-    bookingWhatsAppLink: 'https://wa.me/911234567890?text=I%20would%20like%20to%20book%20a%20bus%20ride'
+    bookingWhatsAppLink: 'https://wa.me/917972770127?text=I%20would%20like%20to%20book%20a%20bus%20ride'
 };
