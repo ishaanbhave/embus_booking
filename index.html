@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embus - Mumbai Bus Service</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <h1><img src="images/embus-logo.png" alt="Embus Logo" class="embus-logo"></h1>
+                </div>
+                <div class="last-updated">
+                    <span id="last-updated-text">Last updated: --</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="filter-section">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="pickup-filter">Filter by Pickup Stop:</label>
+                    <select id="pickup-filter">
+                        <option value="all">All Stops</option>
+                        <!-- Stops will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="refresh-button">
+                    <button id="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh Data</button>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <div class="loading" id="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading bus data...</p>
+        </div>
+
+        <div class="error-message" id="error-container">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p id="error-text">Error loading bus data. Please try again.</p>
+        </div>
+
+        <div class="no-results" id="no-results-container">
+            <i class="fas fa-info-circle"></i>
+            <p>No bus data available for the selected filter.</p>
+        </div>
+
+        <main class="bus-info-container" id="bus-info-container">
+            <!-- Bus information cards will be populated here dynamically -->
+        </main>
+
+        <div class="bus-info-template" id="bus-card-template" style="display: none;">
+            <div class="bus-card">
+                <div class="bus-route">
+                    <div class="route-header">
+                        <div class="route-title">
+                            <h2 class="route-number"></h2>
+                            <span class="route-name"></span>
+                        </div>
+                        <button class="route-expand-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bus-details">
+                    <div class="stop-info">
+                        <div class="stop-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="stop-name"></div>
+                    </div>
+                    <div class="eta-info">
+                        <div class="eta-icon"><i class="fas fa-clock"></i></div>
+                        <div class="eta-time"></div>
+                    </div>
+                    <div class="seats-info">
+                        <div class="seats-icon"><i class="fas fa-chair"></i></div>
+                        <div class="seats-available"></div>
+                    </div>
+                </div>
+                <div class="route-stops-container">
+                    <!-- All stops for this route will be displayed here -->
+                </div>
+                <div class="booking-action">
+                    <a href="#" class="book-button" target="_blank">
+                        <i class="fas fa-phone-alt"></i> Book on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Template for a single stop in the expanded route view -->
+        <div class="stop-info-template" id="stop-info-template" style="display: none;">
+            <div class="route-stop-item">
+                <div class="stop-info">
+                    <div class="stop-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="stop-name"></div>
+                </div>
+                <div class="stop-details">
+                    <div class="eta-info">
+                        <div class="eta-icon"><i class="fas fa-clock"></i></div>
+                        <div class="eta-time"></div>
+                    </div>
+                    <div class="seats-info">
+                        <div class="seats-icon"><i class="fas fa-chair"></i></div>
+                        <div class="seats-available"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Embus - Mumbai Bus Service. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

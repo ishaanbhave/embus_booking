@@ -1,0 +1,582 @@
+/* Base Styles */
+:root {
+    /* Embus-themed color palette */
+    --primary-color: #01DF73; /* Primary Embus green */
+    --secondary-color: #C9E600; /* Secondary Embus lime green */
+    --accent-color: #e0ffea; /* Light green accent */
+    --dark-color: #000000; /* Black for contrast */
+    --light-color: #f5f5f5; /* Light background */
+    --success-color: #01DF73; /* Green for available seats */
+    --warning-color: #C9E600; /* Lime for medium availability */
+    --danger-color: #e74c3c; /* Red for low availability */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    padding: 20px 0;
+    color: white;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo .embus-logo {
+    height: 40px;
+    margin-right: 5px;
+}
+
+.last-updated {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Filter Section Styles */
+.filter-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.filter-group label {
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 16px;
+}
+
+.filter-group select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.refresh-button button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.refresh-button button:hover {
+    background-color: #a9c200;
+}
+
+/* Loading Indicator */
+.loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    display: none;
+    background-color: #feecec;
+    border: 1px solid #e74c3c;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #c0392b;
+}
+
+.error-message i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* No Results */
+.no-results {
+    display: none;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6c757d;
+}
+
+.no-results i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Bus Information Cards */
+.bus-info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.bus-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bus-route {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    position: relative;
+}
+
+.route-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.route-title {
+    flex-grow: 1;
+}
+
+.bus-route h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.route-name {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.route-expand-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.route-expand-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.route-expand-btn i {
+    transition: transform 0.3s ease;
+}
+
+.route-expand-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+.route-stops-container {
+    display: none;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.route-stops-container.active {
+    display: block;
+}
+
+.booking-action {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.book-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(1, 223, 115, 0.3);
+    transition: all 0.3s ease;
+    gap: 10px;
+}
+
+.book-button:hover {
+    background-color: #00c265;
+    box-shadow: 0 6px 12px rgba(1, 223, 115, 0.4);
+    transform: translateY(-2px);
+}
+
+.book-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(1, 223, 115, 0.2);
+}
+
+.book-button i {
+    font-size: 18px;
+}
+
+.route-stop-item {
+    padding: 12px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.route-stop-item:last-child {
+    border-bottom: none;
+}
+
+.route-stop-item.highlighted-stop {
+    background-color: rgba(1, 223, 115, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.stop-details {
+    display: flex;
+    gap: 15px;
+    margin-left: 55px;
+}
+
+.bus-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stop-info, .eta-info, .seats-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stop-icon, .eta-icon, .seats-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.stop-icon {
+    background-color: rgba(1, 223, 115, 0.15);
+    color: var(--primary-color);
+}
+
+.eta-icon {
+    background-color: rgba(201, 230, 0, 0.15);
+    color: var(--secondary-color);
+}
+
+.seats-icon {
+    background-color: rgba(1, 223, 115, 0.1);
+    color: var(--primary-color);
+}
+
+.stop-name, .eta-time, .seats-available {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.seats-available {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.seats-high {
+    color: var(--success-color);
+}
+
+.seats-medium {
+    color: var(--warning-color);
+}
+
+.seats-low {
+    color: var(--danger-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* API Configuration Section */
+.api-config-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.config-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-color);
+    transition: background-color 0.3s;
+}
+
+.config-toggle-btn:hover {
+    background-color: #e9ecef;
+}
+
+.config-form {
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.config-inputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.config-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.config-actions button {
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#save-config-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+#save-config-btn:hover {
+    background-color: #00b35e;
+}
+
+#hide-config-btn {
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    border: 1px solid #ddd;
+}
+
+#hide-config-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .bus-info-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .config-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .bus-route h2 {
+        font-size: 18px;
+    }
+    
+    .bus-details {
+        padding: 15px;
+    }
+}
